@@ -4,4 +4,4 @@
 
 "use strict";
 
-$(".top-nav-bar").load("templates/top.html");
+$(".top-nav-bar").load("/templates/top.html");
