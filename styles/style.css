@@ -1,4 +1,3 @@
-
 body{
   background-color: #007bff52;
 }
@@ -28,4 +27,9 @@ ul{
 }
 .custom-img2{
   height: 2em;
+  padding: .3em .3em .3em .3em;
+  border-radius: .3em;
+}
+.custom-img2:hover{
+  background-color: #ffc1077a;
 }
