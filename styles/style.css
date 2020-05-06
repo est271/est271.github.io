@@ -3,6 +3,7 @@ body{
 }
 .btn-primary{
   margin-bottom: .4rem;
+  color: black;
 }
 .jumbotron{
   background-color:#8e8dd0; 
