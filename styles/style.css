@@ -2,7 +2,6 @@ body{
   background-color: #007bff52;
 }
 .btn-primary{
-  margin-bottom: .4rem;
   color: black;
 }
 .jumbotron{
@@ -39,8 +38,4 @@ ul{
 }
 .p2{
   margin-bottom: 5rem;
-}
-h3{
-  position: absolute; 
-  bottom: 0;
 }
