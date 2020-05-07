@@ -1,8 +1,9 @@
 body{
   background-color: #007bff52;
 }
-.btn-primary{
+.btn{
   color: black;
+  margin-bottom: .4rem;
 }
 .jumbotron{
   background-color:#8e8dd0; 
