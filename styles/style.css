@@ -40,3 +40,13 @@ ul{
 .p2{
   margin-bottom: 5rem;
 }
+.modal-header{
+  background-color: #3fff007a;
+}
+#unmerged{
+  background-color: #ffe000b3;
+  cursor: pointer;
+}
+#unmerged:hover{
+  background-color: green;
+}
