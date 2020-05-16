@@ -7,7 +7,7 @@ body{
 }
 .jumbotron{
   background-color:#8e8dd0; 
-  margin-top: 4rem;
+  margin-top: 6rem;
 }
 .card{
   margin-bottom: 4rem;
@@ -43,10 +43,26 @@ ul{
 .modal-header{
   background-color: #3fff007a;
 }
+.nav-link{
+  color: black;
+}
+.nav-link:hover{
+  background-color: #ffc1077a;
+  padding: .3em .3em .3em .3em;
+  border-radius: .3em;
+}
 #unmerged{
   background-color: #ffe000b3;
   cursor: pointer;
 }
 #unmerged:hover{
   background-color: green;
+}
+#top-nav-id{
+  background-color: #3aa953;
+  border-bottom: .4em solid #008068;
+}
+#bot-nav-id{
+  background-color: #3aa953;
+  border-top: .4em solid #008068;
 }
