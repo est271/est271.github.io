@@ -48,7 +48,6 @@ ul{
 }
 .nav-link:hover{
   background-color: #ffc1077a;
-  padding: .3em .3em .3em .3em;
   border-radius: .3em;
 }
 #unmerged{
