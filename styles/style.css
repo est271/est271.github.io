@@ -66,6 +66,16 @@ ul{
   border-top: .4em solid #008068;
 }
 .front{
+    position: relative;
     text-align: center;
     font: 2.5em sans-serif;
+}
+#name1{
+    bottom: 5em;
+}
+#name2{
+    right: 12em;
+}
+#name3{
+    opacity: 0.01
 }
