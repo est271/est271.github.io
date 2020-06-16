@@ -79,3 +79,8 @@ ul{
 #name3{
     opacity: 0.01
 }
+.home-btn{
+    margin: 1em 2em 1em 2em;
+    padding: 0.5em 2em 0.5em 2em;
+    opacity: 0.01;
+}

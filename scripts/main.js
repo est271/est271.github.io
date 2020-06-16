@@ -21,7 +21,7 @@ $(document).ready( () => {
     $(".fade1").fadeTo(700, 1.0);
 });
 
-$(document).on("click", ".nav-link, .btn-primary", (event) => {
+$(document).on("click", ".nav-link, .btn-primary, .home-btn", (event) => {
     let href = event.target.href;
     event.preventDefault();
     $(".fade1").fadeOut(700, () => {
@@ -36,6 +36,8 @@ $(document).on("click", "#unmerged", (event) => {
 $(document).ready( () => {
     $("#name1").animate({ "bottom": "0em" }, 1000);
     $("#name2").animate({ "right": "0em" }, 1000, () => {
-        $("#name3").fadeTo(700, 1.0);
+        $("#name3").fadeTo(700, 1.0, () => {
+            $(".home-btn").fadeTo(700, 1.0);
+        });
     });
 });
