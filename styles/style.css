@@ -65,3 +65,7 @@ ul{
   background-color: #3aa953;
   border-top: .4em solid #008068;
 }
+.front{
+    text-align: center;
+    font: 2.5em sans-serif;
+}
