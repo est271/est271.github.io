@@ -66,12 +66,14 @@ ul{
   border-top: .4em solid #008068;
 }
 .front{
-    position: relative;
-    text-align: center;
-    font: 2.5em sans-serif;
+  position: relative;
+  text-align: center;
+  font: 2.5em sans-serif;
 }
 #name1{
-    bottom: 5em;
+  position: relative;
+  text-align: center;
+  bottom: 5em;
 }
 #name2{
     right: 12em;
@@ -80,7 +82,7 @@ ul{
     opacity: 0.01
 }
 .home-btn{
-    margin: 1em 2em 1em 2em;
-    padding: 0.5em 2em 0.5em 2em;
-    opacity: 0.01;
+  margin: 1em 2em 1em 2em;
+  padding: 0.5em 2em 0.5em 2em;
+  opacity: 0.01;
 }
