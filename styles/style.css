@@ -73,7 +73,7 @@ ul{
 #name1{
   position: relative;
   text-align: center;
-  bottom: 5em;
+  font-weight: bold;
 }
 #name2{
     right: 12em;
