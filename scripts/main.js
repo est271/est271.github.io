@@ -41,3 +41,21 @@ $(document).ready( () => {
         });
     });
 });
+
+$(document).on("click", "#formbtn", (event) => {
+    event.preventDefault();
+
+    // regex to remove newline
+    let reg = /\n/g;
+
+    const formName = $("#nameInput")[0].value;
+    const formEmail = $("#emailInput")[0].value;
+    let formText= $("#textArea")[0].value.replace(reg, ' ');
+
+    const message = {
+      name: formName,
+      email: formEmail,
+      text: formText
+    };
+
+});
