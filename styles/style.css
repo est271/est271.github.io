@@ -38,7 +38,7 @@ ul{
   opacity: 0.1;
 }
 .p2{
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
 }
 .modal-header{
   background-color: #3fff007a;
@@ -76,13 +76,22 @@ ul{
   font-weight: bold;
 }
 #name2{
-    right: 12em;
+  right: 12em;
 }
 #name3{
-    opacity: 0.01
+  opacity: 0.01
 }
 .home-btn{
   margin: 1em 2em 1em 2em;
   padding: 0.5em 2em 0.5em 2em;
   opacity: 0.01;
+}
+
+form {
+  text-align: center;
+  box-shadow: 0 2px 3px #ccc;
+  border: 1px solid black;
+  padding: 2%;
+  margin-bottom: 5%;
+  border-radius: 15px;
 }
