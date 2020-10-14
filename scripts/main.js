@@ -50,7 +50,7 @@ const errorSequence = () => {
   $('#formText').html("Make sure no special characters are used such as < or {");
   $('#messBody').append($('<p>Also make sure that JavaScript is enabled in your browser</p>'));
   $('#form-title').html("Uh-oh!!! The message could not be sent");
-  $('#form-message').modal('show').on('hidden.bs.modal',() => window.location.reload());
+  $('#form-message').modal('show').on('hidden.bs.modal', () => location.reload(true));
 };
 
 const onSubmitHandler = () => {
@@ -73,7 +73,7 @@ const onSubmitHandler = () => {
       headers: { 'Content-Type': 'application/json' }
     }).then(response => {
       if (response.ok) {
-        $('#form-message').modal('show').on('hidden.bs.modal',() => window.location.reload());
+        $('#form-message').modal('show').on('hidden.bs.modal', () => location.reload(true));
       } else {
         errorSequence();
       }
