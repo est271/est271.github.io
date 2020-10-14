@@ -59,9 +59,10 @@ const onSubmitHandler = () => {
 
     const formName = $("#nameInput")[0].value;
     const formEmail = $("#emailInput")[0].value;
-    let formText= $("#textArea")[0].value.replace(reg, ' ');
+    let formText = $("#textArea")[0].value.replace(reg, ' ');
 
     const data = {
+      date: Date(),
       name: formName,
       email: formEmail,
       text: formText
