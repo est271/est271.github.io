@@ -17,6 +17,9 @@ $("#project-4-html").load("../templates/skill_btn.html #project-4-btn");
 $("#project-5-html").load("../templates/skill_btn.html #project-5-btn");
 $("#project-6-html").load("../templates/skill_btn.html #project-6-btn");
 
+//form message templates
+$("#formSubmit").load("../templates/skill_btn.html #form-message");
+
 $(document).ready( () => {
     $(".fade1").fadeTo(700, 1.0);
 });
@@ -42,9 +45,15 @@ $(document).ready( () => {
     });
 });
 
-$(document).on("click", "#formbtn", (event) => {
-    event.preventDefault();
+const errorSequence = () => {
+  $('#formHeader').css("background-color", "red");
+  $('#formText').html("Make sure no special characters are used such as < or {");
+  $('#messBody').append($('<p>Also make sure that JavaScript is enabled in your browser</p>'));
+  $('#form-title').html("Uh-oh!!! The message could not be sent");
+  $('#form-message').modal('show').on('hidden.bs.modal',() => window.location.reload());
+};
 
+const onSubmitHandler = () => {
     // regex to remove newline
     let reg = /\n/g;
 
@@ -52,10 +61,24 @@ $(document).on("click", "#formbtn", (event) => {
     const formEmail = $("#emailInput")[0].value;
     let formText= $("#textArea")[0].value.replace(reg, ' ');
 
-    const message = {
+    const data = {
       name: formName,
       email: formEmail,
       text: formText
     };
 
-});
+    fetch('https://port-messages-be0d5.firebaseio.com/messages.json', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: { 'Content-Type': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        $('#form-message').modal('show').on('hidden.bs.modal',() => window.location.reload());
+      } else {
+        errorSequence();
+      }
+    }).catch( error => {
+      console.log(error) 
+      errorSequence();
+    });
+};
