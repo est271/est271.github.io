@@ -20,8 +20,9 @@ body{
 .card-text{
     margin-top: 1em;
 }
-ul{
+ul li{
   text-align:left;
+  margin-bottom: 30px;
 }
 .custom-img{
   height: 3em;
