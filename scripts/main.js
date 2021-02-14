@@ -68,7 +68,7 @@ const onSubmitHandler = () => {
       text: formText
     };
 
-    fetch('https://port-messages-be0d5.firebaseio.com/messages.json', {
+    fetch('', {
       method: 'POST',
       body: JSON.stringify(data),
       headers: { 'Content-Type': 'application/json' }

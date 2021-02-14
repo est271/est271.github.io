@@ -101,3 +101,9 @@ form {
   margin-bottom: 5%;
   border-radius: 15px;
 }
+
+.h4-warn{
+  padding: 0 .5em;
+  border: solid red .2em;
+  border-radius: .7em;
+}
