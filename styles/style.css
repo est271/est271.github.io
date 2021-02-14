@@ -35,6 +35,11 @@ ul li{
 .custom-img2:hover{
   background-color: #ffc1077a;
 }
+.custom-img3{
+    height: 2rem;
+    padding: .1rem;
+    border-radius: .4rem;
+}
 .fade1{
   opacity: 0.1;
 }
