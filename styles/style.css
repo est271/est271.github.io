@@ -107,3 +107,14 @@ form {
   border: solid red .2em;
   border-radius: .7em;
 }
+
+#home-cnt{
+  margin-top: 6em;
+}
+
+/*  when the screen width is greater than 400px, apply these properties  */
+@media ( min-width: 400px) {
+  #home-cnt{
+    margin-top: 10em;
+  }
+}
