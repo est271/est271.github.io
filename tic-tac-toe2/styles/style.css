@@ -1,0 +1,166 @@
+body{
+  background:#999;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.canvas-outer{
+  height: auto;
+  width: 95vw;
+  background-color: #669999;
+  border-radius: 10px;
+  padding-bottom: 10px;
+}
+
+.canvas-inner{
+  width: 86%;
+  margin: 0px auto 0px auto;
+  padding: 10px 0px 0px 0px;
+
+}
+
+.game-title{
+  padding: 5px 0;
+  margin: 0 auto;
+  border: 3px solid #000;
+  border-radius: 10px;
+  text-align: center;
+  font: bold 2rem sans-serif;
+}
+
+.info{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  border: 3px solid #000;
+  border-radius: 10px;
+}
+#results{
+  width: 75vw;
+  border: 2px solid blue;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  font: 23px sans-serif;
+  padding: 0px 5px 0px 5px;
+  line-height: 25px;
+}
+#reset{
+  height: 45px;
+  width: 18vw;
+  margin: 0px 0px 0px 24px;
+  font: 20px sans-serif;
+  border-radius: 10px;
+  border: 3px solid blue;
+  cursor: pointer;
+}
+
+.drag-container{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.2em;
+}
+.player{
+  /*flex-basis: 47%;*/
+  flex-basis: 25vh;
+  border: 3px solid #000;
+  border-radius: 10px;
+  text-align: center;
+  font: 1.3rem sans-serif;
+  padding: 5px;
+}
+.mv-sq-x{
+  width: 14vh;
+  height: 14vh;
+  background-image: url(../images/x.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  border: 3px solid #000;
+  margin: 10px auto 0 auto;
+}
+.mv-sq-o{
+  width: 14vh;
+  height: 14vh;
+  background-image: url(../images/o.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  border: 3px solid #000;
+  margin: 10px auto 0 auto;
+}
+.mv-sq-x:hover:active, .mv-sq-o:hover:active{
+  opacity: 0;
+}
+
+.board{
+  height: auto;
+  width: auto;
+}
+
+.row{
+  width: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.square{
+  width: 14vh;
+  height: 14vh;
+  border: 3px solid #000;
+  background-color: orange;
+  pointer-events: auto;
+  margin: 0;
+}
+
+.square .mv-sq-x, .square .mv-sq-o{
+  height: 100%;
+  width: 100%;
+  border: 0;
+  margin: 0;
+}
+
+/*   when the screen-W is less than 700px & screen-H is less than 650px   */
+@media (max-width: 43.75em) and (max-height: 40.62em) {
+  #results{
+    font: 15px sans-serif;
+  }
+  #reset{
+    font: 12px sans-serif;
+  }
+}
+
+/*   when the screen-W is less than 700px & screen-H is greater than 750px  */
+@media (max-width: 43.75em) and (min-height: 46.67em) {
+  .square {
+    width: 12vh;
+    height: 12vh;
+  }
+}
+
+/*   when the screen-W is greater than 1040px  */
+@media (min-width: 65em) {
+  .canvas-inner {
+    width: 50vh;
+  }
+}
+
+/*   when the screen-W is less than 1040px  */
+@media (max-width: 65em) {
+
+  /* Prevent Address-Bar hiding in mobile Browsers */
+  html{
+    overflow: hidden;
+  }
+  body{
+    height:100%;
+    position:fixed;
+    overflow-y:scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+}
