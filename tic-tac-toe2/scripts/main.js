@@ -10,6 +10,9 @@ let GAME = (function() {
     let dragged;
     let unq_id = 0;
     let game_win = 0;
+    let diff_select = 0;
+    const cross = [[0,1],[1,0],[1,2],[2,1]];
+    const crner = [[0,0],[0,2],[2,0],[2,2]];
 
     // game logic array
     let arr = [
@@ -113,10 +116,10 @@ let GAME = (function() {
         let squareChoice = null;
         if (ev.target) {
             ev.preventDefault();
-            squareChoice = ev.target // for desktop users
+            squareChoice = ev.target; // for desktop users
         } else {
-            squareChoice = ev // for mobile device users
-        };
+            squareChoice = ev; // for mobile device users
+        }
 
         if (squareChoice.className === sqrClass && game_win === 0){
             squareChoice.style.border = blkBorder;
@@ -146,9 +149,9 @@ let GAME = (function() {
                 if (unq_id === 1){
                     let cpuOff = null;
                     if (dragged.id === 'first-x'){
-                        cpuOff = document.querySelector('.drag-container :nth-child(2)')
+                        cpuOff = document.querySelector('.drag-container :nth-child(2)');
                     } else {
-                        cpuOff = document.querySelector('.drag-container :nth-child(1)')
+                        cpuOff = document.querySelector('.drag-container :nth-child(1)');
                     }
                     cpuOff.style.opacity = cpuFade;
                     cpuOff.children[0].setAttribute('draggable', false);
@@ -277,9 +280,11 @@ let GAME = (function() {
 
         let availableMoves = getAvailableMoves(arr);
 
-        // later I will give the option of playing 'easy' or 'hard' mode and run either one of the 2 lines below
-        // const cpu_move = generateRandomMove(availableMoves);
-        const cpu_move = generateMove(availableMoves);
+        let cpu_move = null;
+
+        if (diff_select === 1){
+            cpu_move = generateRandomMove(availableMoves);
+        } else cpu_move = generateMove(availableMoves);
 
         if (cpu_move){
             initiateMove(cpu_move);
@@ -376,20 +381,46 @@ let GAME = (function() {
             playerNumber = xValue;
         }
 
+        // hard mode stuff
+        if (diff_select === 3){
+
+            if (unq_id === 1){
+                if (arr[1][1] === 0) {
+                    return([1,1]);
+                } else {
+                    return crner[Math.floor(Math.random() * crner.length)];
+                }
+            } else if (unq_id === 3){
+                if ( (arr[0][0] === playerNumber && arr[2][2] === playerNumber)
+                    || (arr[0][2] === playerNumber && arr[2][0] === playerNumber) ){
+                    return outerSqrCheck(cross, avMovesArray);
+
+                } else if ( (arr[0][0] !== 0 && arr[1][1] !== 0 && arr[2][2] !== 0)
+                    || (arr[0][2] !== 0 && arr[1][1] !== 0 && arr[2][0] !== 0) ){
+                    return outerSqrCheck(crner, avMovesArray);
+
+                } else if (arr[0][1] === playerNumber && arr[1][0] === playerNumber){
+                    return([0,0]);
+                } else if (arr[0][1] === playerNumber && arr[1][2] === playerNumber){
+                    return([0,2]);
+                } else if (arr[2][1] === playerNumber && arr[1][0] === playerNumber){
+                    return([2,0]);
+                } else if (arr[2][1] === playerNumber && arr[1][2] === playerNumber){
+                    return([2,2]);
+                }
+            }
+        }
+
         // analyze every availabe square to see if there is a winning move for the computer
-        let compWin = false;
         for (let x = 0; x < avMovesArray.length; x++){
-            compWin = checkForWin(avMovesArray[x], cpuNumber);
-            if (compWin) {
+            if (checkForWinBlock(avMovesArray[x], cpuNumber)) {
                 return avMovesArray[x];
             }
         }
 
         // if no winning moves, analyze every availabe square to see if the computer can block a player win
-        let compBlock = false;
         for (let y = 0; y < avMovesArray.length; y++){
-            compBlock = checkForWin(avMovesArray[y], playerNumber);
-            if (compBlock) {
+            if (checkForWinBlock(avMovesArray[y], playerNumber)) {
                 return avMovesArray[y];
             }
         }
@@ -398,18 +429,47 @@ let GAME = (function() {
         return generateRandomMove(avMovesArray);
     }
 
-    function checkForWin (move, winNumber) {
+    function checkForWinBlock (move, winNumber) {
         // created checkArray this way to make a true non reference copy. otherwise arr will be modified
         let checkArray = JSON.parse(JSON.stringify(arr));
         checkArray[move[0]][move[1]] = winNumber;
         return win_comb(3 * winNumber, checkArray);
     }
 
+    function outerSqrCheck (arr_selec, avArray) {
+        // This function will randomly select one of the squares in arr_selec, if available
+        let bestMoves = [];
+        for (let z = 0; z < arr_selec.length; z++){
+            for (let zz = 0; zz < avArray.length; zz++){
+                if (arr_selec[z][0] === avArray[zz][0] && arr_selec[z][1] === avArray[zz][1]){
+                    bestMoves.push(arr_selec[z]);
+                    break;
+                }
+            }
+        }
+        return bestMoves[Math.floor(Math.random() * bestMoves.length)];
+    }
+
+    function difficultySelect (lvl) {
+        if (lvl >= 1 && lvl <= 3) {
+            diff_select = lvl;
+            document.querySelector('.backdrop').classList.add('modal-hide');
+        } else throw new Error("an Error ocurred during level selection");
+        return;
+    }
+
     return {
         resetbtn: function () {
             window.location.reload();
         },
-        start_info: info_log
+        start_info: info_log,
+        level: function (lvl_try) {
+            try {
+                difficultySelect(lvl_try);
+            } catch(e){
+                console.error(e);
+            }
+        }
     };
 
 })();
