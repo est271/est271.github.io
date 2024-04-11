@@ -156,7 +156,7 @@ let GAME = (function() {
                     cpuOff.style.opacity = cpuFade;
                     cpuOff.children[0].setAttribute('draggable', false);
                 }
-                
+
                 info_log();
 
                 computerTurn();
@@ -453,6 +453,8 @@ let GAME = (function() {
     function difficultySelect (lvl) {
         if (lvl >= 1 && lvl <= 3) {
             diff_select = lvl;
+            const lvlText = (lvl === 1) ? 'easy' : (lvl === 2) ? 'medium' : 'hard';
+            document.querySelector('#lvl-txt').innerHTML = lvlText;
             document.querySelector('.backdrop').classList.add('modal-hide');
         } else throw new Error("an Error ocurred during level selection");
         return;
